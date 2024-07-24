@@ -1,7 +1,7 @@
 """ shortest_path/models.py"""
 
 from .constants import FieldTypes as FT
-from .views import NodeNetwork
+from .views import NodeNetwork, Simulation
 
 import networkx as nx
 import matplotlib 
@@ -14,6 +14,10 @@ from matplotlib.backends.backend_tkagg import (
     NavigationToolbar2Tk
 )
 
+class DrawSim(Simulation):
+    # Continue for dynamic functionality when changing values in GUI ...
+    fields = {}
+    # def sim()
 
 class DrawNetwork(NodeNetwork):
     fields = {

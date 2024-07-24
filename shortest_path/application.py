@@ -22,9 +22,11 @@ class Application(tk.Tk):  # subclase from Tk instead of Frame
         super().__init__(*args, **kwargs)
 
         self.model = m.DrawNetwork(self)
+        self.sim_model = m.DrawSim(self, 1)
         # Add form with widgets
         self.myform = v.MyForm(self, self.model)
         self.nodeform = v.NodeForm(self, self.model)
+        self.simform = v.SimForm(self, self.model)
         # self.nodeform = v.MyForm(self, self.model)
 
         # window title
@@ -40,6 +42,7 @@ class Application(tk.Tk):  # subclase from Tk instead of Frame
 
         self.myform.grid(row=1, padx=10, sticky=tk.W + tk.E)
         self.nodeform.grid(row=1, column=2, padx=10, sticky=tk.W + tk.E, columnspan=3)
+        self.simform.grid(row=2, column=2, padx=10, sticky=tk.W + tk.E, columnspan=3)
         self.myform.bind('<<GeneratePlot>>', self._on_generate)
 
 
@@ -47,6 +50,7 @@ class Application(tk.Tk):  # subclase from Tk instead of Frame
         # data_seeds= self.model.seeds()
         # data_network = self.model.network()
 
+     
 
         def show_node_network(self, *_):
             chart = v.NodeNetwork(
@@ -60,6 +64,14 @@ class Application(tk.Tk):  # subclase from Tk instead of Frame
             
         show_node_network(self)
     
+        def show_sim(self, *_):
+            chart = v.Simulation(
+                self.simform, 10
+            )
+            chart.grid(row=2, column=4, columnspan=3)
+            chart.do_animation()
+
+        show_sim(self)
 
 
         ############# EXAMPLE PLOTS #############
