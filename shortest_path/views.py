@@ -362,7 +362,8 @@ class Simulation(tk.Frame):
 
     ParticleClass = Particle
 
-    def __init__(self, parent, n, radius=0.01, styles=None):
+    # def __init__(self, parent, n, radius=0.01, styles=None):
+    def __init__(self, parent, n, radius, styles=None):
         super().__init__(parent)
     
         """Initialize the simulation with n Particles with radii radius.
@@ -377,7 +378,8 @@ class Simulation(tk.Frame):
     
         self.init_particles(n, radius, styles)
         self.dt = 0.01
-
+        # self.radii = np.random.random(nparticles)*0.03+0.02
+        # self.radius = np.random.random(nparticles)*0.03+0.02
     def place_particle(self, rad, styles):
         # Choose x, y so that the Particle is entirely inside the
         # domain of the simulation.

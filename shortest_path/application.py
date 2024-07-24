@@ -10,6 +10,9 @@ from . import models as m
 import networkx as nx
 from numpy.random import default_rng
 
+# sim
+import numpy as np
+
 class Application(tk.Tk):  # subclase from Tk instead of Frame
     """Application root window.
     It needs to contain:
@@ -22,7 +25,7 @@ class Application(tk.Tk):  # subclase from Tk instead of Frame
         super().__init__(*args, **kwargs)
 
         self.model = m.DrawNetwork(self)
-        self.sim_model = m.DrawSim(self, 1)
+        self.sim_model = m.DrawSim(self, 1, 0.01)
         # Add form with widgets
         self.myform = v.MyForm(self, self.model)
         self.nodeform = v.NodeForm(self, self.model)
@@ -65,8 +68,10 @@ class Application(tk.Tk):  # subclase from Tk instead of Frame
         show_node_network(self)
     
         def show_sim(self, *_):
+            nparticles = 20
+            radii = np.random.random(nparticles)*0.03+0.02
             chart = v.Simulation(
-                self.simform, 10
+                self.simform, nparticles, radii
             )
             chart.grid(row=2, column=4, columnspan=3)
             chart.do_animation()
