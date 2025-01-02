@@ -1,4 +1,4 @@
-# shortest-path-node
+# Shortest Path Node GUI
 find the shortest path between two nodes in a network using python NetworkX.
 
 ## Description
@@ -8,13 +8,13 @@ shortest route between two nodes in a network. For instance, this could be the s
 nodes represent the cities and the edges are roads connecting pairs of cities. In this case, the
 weights of the edges would be their lengths.
 
-![shortest-path](https://user-images.githubusercontent.com/68698872/174839029-f0e9c1b8-d453-4f0e-826a-281c2a35d9b8.png)
+![shortest-path](screenshot.png)
 
 ## TODO
 ### Improve
 - [ ] Validate spinbox input values (Int only)
 - [ ] Make sure path-to-find is inside node range
-- [ ] Improve Plot generator
+- [x] Improve dynamic title for errors.
 - [ ] Comment out old logic
 
 
